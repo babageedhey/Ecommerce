@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
+from django.contrib.auth import logout as django_logout
+
 # Create your views here.
 
 def signup(request):
@@ -59,5 +61,8 @@ def dashboard(request):
     return render(request, 'accounts/dashboard.html', context)
 
 def logout(request):
-    return redirect('index.html')
+    print('logged out')
+    django_logout(request)
+
+    return  redirect('index')
     

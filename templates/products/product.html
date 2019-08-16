@@ -5,11 +5,20 @@
 <div class="container">
     
     <div class="rows">
-        <div class="col-md-2">
+        <div class="col-md-6">
             <div class="card">
-                <p>{{product.name}} | {{product.id}} </p>
-                <p>{{product.description}}</p>
+                {{object.timestamp}}
+                <p>{{ product.name }} | {{ product.id }} </p>
+                {% if object.image %}
+                    <img src="{{ product.photo_main.url}}" alt="product image">
+                {% endif %}
+                <p>{{product.description | truncatewords:10}}</p>
             </div>
+        </div>
+        <div class="col-md-6">
+           
+            {% include 'products/update-cart.html' with product=product cart=cart %}
+            
         </div>
     </div>
     

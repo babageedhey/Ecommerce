@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<div class="container">
+    
+    <div class="rows">
+        <div class="col-md-2">
+            {% if featured_products %}
+                {% for product in featured_products %}
+                    <div class="card">
+                        <p>{{product.name}} | {{product.id}} </p>
+                        <img src="{{ product.photo_main.url}}" alt="Featured product image">
+                        <p>{{product.description | linebreaks | truncatewords:12}}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                    <p>No Featured Products Available</p>
+            {% endif %}
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

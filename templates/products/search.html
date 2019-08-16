@@ -3,6 +3,7 @@
 {% block content%}
 
 <div class="container">
+    <p>Results for <b>'{{ request.GET.name }}'</b></p>
     {% if products %}
         {% for product in products %}
             <div class="rows">
@@ -16,7 +17,7 @@
             </div>
         {% endfor %}
     {% else %}
-        <p>No Products Available Yet in Store</p>
+        <p>No Result Found</p>
     {% endif %}
 </div>
 

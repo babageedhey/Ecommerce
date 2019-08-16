@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+    <h1>Here is your cart</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Product Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in cart.products.all %}
+            <tr>
+                <th scope="row"> {{ forloop.counter }}</th>
+                <td><a href="{% url 'product' product.id %}">{{ product.name }}</a>
+                    {% include 'products/update-cart.html' with product=product cart=cart %}
+                </td>
+                <td>{{ product.price }}</td>
+            </tr>    
+            {% endfor %}
+            <tr>
+                <td colspan="2"></td>
+                <td><b>Subtotal:</b> {{cart.subtotal}}</td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td><b>Total:</b> {{cart.total}}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
